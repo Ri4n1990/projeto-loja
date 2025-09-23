@@ -3,8 +3,6 @@ from sqlalchemy import create_engine
 
 
 
-
-
 try:
     engine = create_engine(var_bd)
     with engine.connect() as conn:
