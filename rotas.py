@@ -1,9 +1,9 @@
 from app import app
 from flask import render_template
-from conexao_bd import engine
+from banco import conexao_bd as bd
 from sqlalchemy import select
 from sqlalchemy.orm import Session
-from models import Cliente, Produto, Compra
+from banco import  models as md
 
 
 
@@ -11,11 +11,11 @@ from models import Cliente, Produto, Compra
 def inicio():
 
     try:
-        conn  = Session(engine)
-        stmt = (select(Cliente.nome, Cliente.cpf, Produto.nome_produto, Compra.qtd, Compra.valor_total)
-                .select_from(Cliente)
-                .join(Compra, Cliente.cpf == Compra.cpf_cliente)
-                .join(Produto, Compra.cod_produto == Produto.cod_produto)
+        conn  = Session(bd.engine)
+        stmt = (select(md.Cliente.nome, md.Cliente.cpf, md.Produto.nome_produto, md.Compra.qtd, md.Compra.valor_total)
+                .select_from(md.Cliente)
+                .join(md.Compra, md.Cliente.cpf == md.Compra.cpf_cliente)
+                .join(md.Produto, md.Compra.cod_produto == md.Produto.cod_produto)
                 
                 
                 
