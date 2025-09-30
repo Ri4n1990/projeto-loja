@@ -1,11 +1,8 @@
-from nis import match
-
 from banco import conexao_bd as bd
 from banco import models as md
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 from sqlalchemy.exc import NoResultFound
-
 
 
 class Adm:
@@ -89,28 +86,33 @@ class Adm:
 
             return 500
         
-
     def atualizar(self,dados,cpf):
 
         try:
             session = Session(bd.engine)
+            cliente = session.get(md.Cliente,cpf)
 
-            pass
-            # aqui
+            if not cliente:
+                return 404
 
-
-
-
+            cliente.nome = dados['nome']
+            cliente.email = dados['email']
+            cliente.data_nascimento = dados['data_nascimento']  
+            cliente.genero = dados['genero']
+            cliente.telefone = dados['telefone']
+            session.commit()
 
             session.close()
-        except:
-            pass
+
+            return 201
 
 
-dados_cli = {"cpf" : "04922014040" , "nome" : "Rian magnus" , "email" : "rianmagnus5791@gmail.com" , "data_nascimento" : "2004-01-03" , "genero" : None, "telefone" : "51993746389"}
+        except Exception as erro:
+            session.rollback()
+            session.close()
+            print('Algo saiu errado', erro)
+            return 500
 
-
-no = Adm()
 
 
 
