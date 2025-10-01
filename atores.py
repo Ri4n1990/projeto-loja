@@ -3,13 +3,14 @@ from banco import models as md
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 from sqlalchemy.exc import NoResultFound
-
+import json
 
 class Adm:
     def __init__(self):
         pass
 
     def __verifica_cliente(self,cpf):
+
         try:
             session = Session(bd.engine)
 
@@ -28,7 +29,36 @@ class Adm:
         except:
             session.close()
             return 500
+
+    def obter_clientes(self):
+
+        try:
+            session = Session(bd.engine)
+
+            stmt = select(md.Cliente)
+
+            result = session.execute(stmt).all()
+
+            registros = []
+
+            for lin in result:
+                dados = {"cpf":lin[0].cpf, "nome" : lin[0].nome , "email": lin[0].email, "data_nascimento" : lin[0].data_nascimento.strftime("%d/%m/%Y") , "genero" : lin[0].genero, "telefone" : lin[0].telefone }
+                registros.append(dados)
             
+
+            session.close()
+            
+            regi_json = json.dumps(registros)
+
+            return regi_json
+
+
+        except Exception as erro:
+            session.close()
+            print('Algo saiu errado!', erro)
+            return 500
+
+
     def criar(self,dados):
 
         resposta = self.__verifica_cliente(dados['cpf'])
@@ -115,4 +145,6 @@ class Adm:
 
 
 
+no = Adm()
 
+pp = no.obter_clientes()

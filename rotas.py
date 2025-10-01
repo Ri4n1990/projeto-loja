@@ -19,8 +19,6 @@ def inicio():
                 
                 
                 
-                
-                
                 )
         result = conn.execute(stmt)
 
