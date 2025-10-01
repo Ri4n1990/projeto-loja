@@ -145,6 +145,4 @@ class Adm:
 
 
 
-no = Adm()
 
-pp = no.obter_clientes()
