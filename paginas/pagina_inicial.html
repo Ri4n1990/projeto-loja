@@ -16,32 +16,9 @@
     <script>
 
 
-        $.ajax({
-            url : "/cliente",
-            type : "POST",
-            contentType : 'application/json',
-            data : JSON.stringify({cpf : '02914033033', nome : "homarzão" , email : 'homarzaogames44@gmail.com', data_nascimento : "2004-01-03", genero : null, telefone : "51998132210"}),
-            statusCode : {
-                409 : ()=>{
-
-                    alert('usuário já existe')
-
-                },
-
-                201 : ()=>{
-                    alert('tudo certo!')
-
-                },
-
-                500 : (erro)=>{
-
-                    alert('algo saiu errado!')
-                    console.log(erro)
-
-                }
-            }
+       
             
-        })
+      
        
                 
 

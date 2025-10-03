@@ -4,6 +4,7 @@ from banco import conexao_bd as bd
 from sqlalchemy.orm import Session
 from banco import  models as md
 from atores import Adm
+import re
 
 
 @app.route('/')
@@ -42,3 +43,58 @@ def novo_cliente():
     except Exception as erro:
         print('algo saiu errado!', erro)
         return 500
+
+
+
+@app.route('/cliente/<cpf>', methods = ['PUT'])
+def atualizar_cliente(cpf):
+
+    try:
+
+        cpf = str(cpf)
+        str_regex = r"^\d{11}$"
+        teste = bool(re.search(str_regex , cpf))
+        
+        if not teste:
+            return "", 400
+
+        dados = request.get_json()
+
+        admin = Adm()
+
+        resposta = admin.atualizar(dados, cpf)
+
+        return  "" , resposta
+
+
+    except Exception as erro:
+        print(f'Algo saiu errado {erro}')
+        return "" , 500
+
+
+
+@app.route('/cliente/<cpf>' , methods = ['DELETE'])
+def excluir_cliente(cpf):
+
+    try:
+        cpf = str(cpf)
+        rege = r'^\d{11}$'
+        teste = re.search(rege, cpf)
+
+        if not teste:
+            return "" , 400
+        
+        admin = Adm()
+        resposta = admin.excluir(cpf)
+        print(resposta)
+        return  "", resposta
+        
+
+    except Exception as erro:
+        print('Algo saiu errado!')
+        return "", 500
+
+
+
+
+
