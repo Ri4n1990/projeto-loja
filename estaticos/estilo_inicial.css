@@ -31,7 +31,7 @@ body{
 
 
 #acoes{
-    width: 15%;
+    width: 15vw;
     min-width: 250px;
     max-width: 300px;
     margin: auto;
@@ -64,6 +64,67 @@ body{
 #acoes>div:hover{
     background-color: var(--cor02);
 }
+
+
+
+#tabela{
+    margin: auto;
+    border-collapse: collapse;
+    width: 70vw;
+    max-width: 1500px;
+    margin-top: 15px;
+    
+    
+
+
+    
+}
+
+#resp_tabela{
+    overflow-x: auto;
+}
+
+
+td,th{
+    
+    border:  1px solid black;
+    padding: 10px;
+    text-align: center;
+    font-family: "Inter", sans-serif;
+    
+    
+
+}
+thead{
+    position: sticky;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.228);
+    top: 0;
+}
+th{
+    font-size: 1.4em;
+    background-color: var(--cor01);
+
+}
+
+
+tbody>tr{
+    cursor: pointer;
+}
+
+tbody>tr:nth-of-type(even){
+    background-color: var(--cor02);
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
