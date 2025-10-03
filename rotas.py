@@ -5,12 +5,29 @@ from sqlalchemy.orm import Session
 from banco import  models as md
 from atores import Adm
 import re
-
+import os
+from app import estaticos
 
 @app.route('/')
 def inicio():
 
-    return render_template('pagina_inicial.html')
+    try:
+        caminho = 'icones'
+        icones = [
+
+            f'{caminho}/editar.png',
+            f'{caminho}/add_cliente.png',
+            f'{caminho}/delete.png'
+
+
+        ]
+
+        return render_template('pagina_inicial.html', estilo = 'estilo_inicial.css', icones = icones)
+
+        
+    except Exception as erro:
+        print('algo saiu errado', erro)
+        return "", 500
 
 
 @app.route('/clientes')

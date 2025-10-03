@@ -4,32 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{{url_for('static',filename = estilo)}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap" rel="stylesheet">
+
     <title>inicio</title>
 
 </head>
 <body>
 
-    <h1>Oi</h1>
+    <header id="cabecalho">
+        <h1>Gestão de clientes</h1>
+    </header>
 
+    <section id="acoes">
 
+        <div id="editar" class="acao_pos"><img src="{{url_for('static' , filename = icones[0])}}" alt="editar" ></div>
 
-    <script>
-
-
-       
-            
-      
-       
-                
-
-
+        <div id="criar" class="acao_pos"><img src="{{url_for('static' , filename = icones[1])}}" alt="criar" ></div>
         
+        <div id="excluir"> <img src="{{url_for('static', filename = icones[2])}}" alt="#"></div>
+
+
+
+    </section>
 
 
 
 
-
-    </script>
-    
 </body>
 </html>
