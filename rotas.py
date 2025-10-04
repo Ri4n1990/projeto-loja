@@ -5,9 +5,7 @@ from sqlalchemy.orm import Session
 from banco import  models as md
 from atores import Adm
 import re
-import os
-from app import estaticos
-
+from datetime import date
 @app.route('/')
 def inicio():
 
@@ -22,7 +20,9 @@ def inicio():
 
         ]
 
-        return render_template('pagina_inicial.html', estilo = 'estilo_inicial.css', icones = icones)
+        caminho_script = 'scripts/interacao_pg_inicial.js'
+
+        return render_template('pagina_inicial.html', estilo = 'estilo_inicial.css', icones = icones, script = caminho_script)
 
         
     except Exception as erro:
@@ -113,5 +113,8 @@ def excluir_cliente(cpf):
 
 
 
-
-
+@app.route('/pagina_add_cliente')
+def criacao_cliente():
+    data = date.today().isoformat()
+    estilo = 'estilo_criacao.css'
+    return render_template('pagina_criar_cliente.html', estilo = estilo, data = data)

@@ -1,0 +1,209 @@
+@charset "UTF-8";
+
+
+:root{
+    --cor01: #89E053;
+    --cor02:#4DB1F0;
+    --cor03:#E07A53;
+    --cor04:#EDEDED;
+}
+
+
+
+
+
+body{
+    background-color:  var(--cor04);
+    
+}
+
+
+#principal{
+    
+    background-color: #fff;
+    width: 50vw;
+    min-width: 700px;
+    margin: auto;
+    border-radius: 5px;
+    box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.16);
+    margin-top: 100px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    padding: 90px 0 90px 0;
+
+    
+
+}
+
+#principal>form{
+   
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    
+    
+}
+
+
+#principal>form>div{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    gap: 15px;
+    
+    
+    
+
+}
+
+
+#principal>form>div>div{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    
+    
+}
+
+#principal>form>div>div>label{
+    font-family:  "Inter", sans-serif;
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+#principal>form>div>div>input,select{
+    font-family: "Inter", sans-serif;
+    font-size: 1.1em;
+    height: 30px;
+    border-radius: 7px;
+    border: 1px solid #000;
+    padding-left: 5px;
+
+    
+
+}
+
+
+
+#botoes{
+    width: 611px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    
+    
+    
+}
+
+#botoes>button{
+    height: 40px;
+    width: 46%;
+    cursor: pointer;
+    font-family:"Inter", sans-serif ;
+    font-size: 1.5em;
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    
+}
+
+#botoes>button:hover{
+    box-shadow: 2px 2px 8px #0000003e;
+}
+
+
+button:first-child{
+    background-color: var(--cor03);
+}
+
+button:last-child{
+    background-color: var(--cor01);
+}
+
+
+
+
+@media (max-width:740px) {
+
+
+    #principal{
+        min-width: 400px;
+    }
+
+    #principal>form{
+        flex-flow: column nowrap;
+    }
+    
+
+    #botoes{
+        flex-flow: column nowrap;
+        gap: 15px;
+        width: 70%;
+
+    }
+
+    #botoes>button{
+        width: 100%;
+    }
+
+
+    
+    
+}
+
+
+@media (max-width:440px) {
+
+    #principal{
+        min-width: 350px;
+    }
+
+    #principal>form>div>div>label{
+        font-size: 1.2em;
+    }
+
+    #principal>form>div>div>input,select{
+        font-size: 1.1em;
+
+    }
+
+    #botoes{
+        
+        width: 80%;
+
+    }
+
+    
+    
+}
+
+@media (max-width:380px) {
+
+    #principal{
+        min-width: 300px;
+    }    
+
+
+    #principal>form>div>div>label{
+        font-size: 1.1em;
+    }
+
+    #principal>form>div>div>input,select{
+        font-size: 1.1em;
+
+    }
+
+    #botoes{
+        
+        width: 83%;
+
+    }
+
+    
+}

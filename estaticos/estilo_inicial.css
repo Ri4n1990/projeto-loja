@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 body{
     margin: 0;
     padding: 0;
@@ -13,6 +15,7 @@ body{
     --cor01 : #89E053;
     --cor02 : #4DB1F0;
     --cor03:  #E07A53;
+    
 }
 
 #cabecalho{
@@ -117,7 +120,9 @@ tbody>tr:nth-of-type(even){
 
 
 
-
+.selecionado{
+     background-color: var(--cor03) !important; 
+}
 
 
 
