@@ -59,6 +59,28 @@ class Adm:
             return 500
 
 
+    def cliente(self, cpf):
+        try:
+            session = Session(bd.engine)
+
+            cliente = session.get(md.Cliente, cpf)
+
+            if(not cliente):
+                return 404
+            
+            dados = {'cpf' : cliente.cpf, 'nome' : cliente.nome, 'email' : cliente.email, 'data_nascimento' : cliente.data_nascimento, 'genero' : cliente.genero, 'telefone' : cliente.telefone}
+
+            session.close()
+
+            return dados
+
+
+
+        
+        except Exception as erro:
+            session.close()
+            return 500
+
     def criar(self,dados):
 
         resposta = self.__verifica_cliente(dados['cpf'])
@@ -125,11 +147,11 @@ class Adm:
             if not cliente:
                 return 404
 
-            cliente.nome = dados['nome']
-            cliente.email = dados['email']
-            cliente.data_nascimento = dados['data_nascimento']  
-            cliente.genero = dados['genero']
-            cliente.telefone = dados['telefone']
+            
+            for k , v in dados.items():
+                if hasattr(cliente, k):
+                    setattr(cliente, k, v )
+                    
             session.commit()
 
             session.close()
@@ -142,6 +164,7 @@ class Adm:
             session.close()
             print('Algo saiu errado', erro)
             return 500
+
 
 
 

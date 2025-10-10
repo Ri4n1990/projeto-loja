@@ -6,11 +6,16 @@ from banco import  models as md
 from atores import Adm
 import re
 from datetime import date
+
+from time import sleep
+
 @app.route('/')
 def inicio():
 
     try:
         caminho = 'icones'
+        caminho_visual = 'visuais'
+
         icones = [
 
             f'{caminho}/editar.png',
@@ -20,9 +25,16 @@ def inicio():
 
         ]
 
-        caminho_script = 'scripts/interacao_pg_inicial.js'
+        visuais = [
+            f'{caminho_visual}/load.gif',
+            f'{caminho_visual}/erro.gif'
 
-        return render_template('pagina_inicial.html', estilo = 'estilo_inicial.css', icones = icones, script = caminho_script)
+        ]
+
+        caminho_script = 'scripts/interacao_pg_inicial.js'
+        
+        
+        return render_template('pagina_inicial.html', estilo = 'estilo_inicial.css', icones = icones, script = caminho_script, visuais = visuais)
 
         
     except Exception as erro:
@@ -32,6 +44,8 @@ def inicio():
 
 @app.route('/clientes')
 def obter_clientes():
+
+    
 
     try:
         admin = Adm()
@@ -44,6 +58,7 @@ def obter_clientes():
 
     except Exception as erro:
         print('algo saiu errado' , erro)
+        return 500
 
 
 
@@ -63,7 +78,7 @@ def novo_cliente():
 
 
 
-@app.route('/cliente/<cpf>', methods = ['PUT'])
+@app.route('/cliente/<cpf>', methods = ['PATCH'])
 def atualizar_cliente(cpf):
 
     try:
@@ -102,8 +117,9 @@ def excluir_cliente(cpf):
             return "" , 400
         
         admin = Adm()
+
         resposta = admin.excluir(cpf)
-        print(resposta)
+
         return  "", resposta
         
 
@@ -119,3 +135,21 @@ def criacao_cliente():
     estilo = 'estilo_criacao.css'
     verificacao = 'scripts/verificacao_add_cliente.js'
     return render_template('pagina_criar_cliente.html', estilo = estilo, data = data, verificacao = verificacao)
+
+
+
+@app.route('/pg_atualizar_cliente/<cpf>')
+def pg_atualizar(cpf):
+    
+    estilo = 'estilo_atualizacao.css'
+    verificacao = 'scripts/verificacao_add_cliente.js'
+    interacao = 'scripts/interacao_atualizar.js'
+
+    return render_template('pagina_atualizar_cliente.html', estilo = estilo , verificacao = verificacao, interacao = interacao)
+
+
+@app.errorhandler(404)
+def erro404(e):
+    estilo = 'estilo_pg_erro404.css'
+    visual = 'visuais/erro404.jpg'
+    return render_template('pg_erro404.html', estilo = estilo, visual = visual)
