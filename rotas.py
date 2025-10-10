@@ -117,4 +117,5 @@ def excluir_cliente(cpf):
 def criacao_cliente():
     data = date.today().isoformat()
     estilo = 'estilo_criacao.css'
-    return render_template('pagina_criar_cliente.html', estilo = estilo, data = data)
+    verificacao = 'scripts/verificacao_add_cliente.js'
+    return render_template('pagina_criar_cliente.html', estilo = estilo, data = data, verificacao = verificacao)

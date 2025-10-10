@@ -31,8 +31,10 @@ body{
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
-    gap: 40px;
+    gap: 30px;
     padding: 90px 0 90px 0;
+    transition: all .3s;
+    
 
     
 
@@ -48,6 +50,7 @@ body{
     
     
 }
+
 
 
 #principal>form>div{
@@ -88,6 +91,10 @@ body{
 
 }
 
+input:focus {
+    outline: none;        
+  }
+
 
 
 #botoes{
@@ -127,6 +134,13 @@ button:last-child{
 }
 
 
+.campo_invalido{
+
+    border: 3px solid red !important;
+
+
+}
+
 
 
 @media (max-width:740px) {
@@ -162,6 +176,7 @@ button:last-child{
 
     #principal{
         min-width: 350px;
+        margin-top: 10px;
     }
 
     #principal>form>div>div>label{
