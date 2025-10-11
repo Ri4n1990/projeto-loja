@@ -27,7 +27,7 @@ def inicio():
 
         visuais = [
             f'{caminho_visual}/load.gif',
-            f'{caminho_visual}/erro.gif'
+            f'{caminho_visual}/sucess.gif',
 
         ]
 
@@ -107,7 +107,7 @@ def atualizar_cliente(cpf):
 
 @app.route('/cliente/<cpf>' , methods = ['DELETE'])
 def excluir_cliente(cpf):
-
+    
     try:
         cpf = str(cpf)
         rege = r'^\d{11}$'
@@ -138,9 +138,11 @@ def criacao_cliente():
 
 
 
-@app.route('/pg_atualizar_cliente/<cpf>')
-def pg_atualizar(cpf):
+@app.route('/pg_atualizar_cliente')
+def pg_atualizar():
     
+    cpf = request.args.get('cpf')
+    print(cpf)
     estilo = 'estilo_atualizacao.css'
     verificacao = 'scripts/verificacao_add_cliente.js'
     interacao = 'scripts/interacao_atualizar.js'

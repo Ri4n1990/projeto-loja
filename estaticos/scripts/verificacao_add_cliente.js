@@ -36,8 +36,10 @@ function verifica_campos(){
 
 $('#criar').click(()=>{
 
-
+    
     let resp = verifica_campos()
+
+    
 
     if(!resp){
         alert('Verifique os campos em vermelho!')
@@ -45,8 +47,23 @@ $('#criar').click(()=>{
     
     }
 
+    let dados = {
+        cpf : $('#cpf').val(),
+        email : $('#email').val(),
+        genero : $('#genero').val(),
+        nome : $('#nome').val(),
+        nascimento : $('#nascimento').val(),
+        telefone : $('#telefone').val()
+    }
 
-    //aqui
+    $.ajax({
+        url : 'cliente',
+        type : 'POST',
+        
+    })
+
+
+    
 
 
 

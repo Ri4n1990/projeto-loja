@@ -20,7 +20,7 @@ class Cliente(Base):
     genero =  MappedColumn(Enum('Masculino', 'Feminino'))
     telefone : Mapped[str] = MappedColumn(String(11), nullable = False)
 
-    compra : Mapped[List["Compra"]] = Relationship(back_populates= 'cliente')
+    compra : Mapped[List["Compra"]] = Relationship(back_populates= 'cliente',passive_deletes=True)
 
 
     def __repr__(self):
@@ -35,7 +35,9 @@ class Compra(Base):
     valor_total = MappedColumn(DECIMAL(10,0), nullable = False)
     data_compra = MappedColumn(DATE, nullable = False)
     tipo_pagamento : Mapped[str] = MappedColumn(String(50), nullable = False)
-    cpf_cliente : Mapped[str] = MappedColumn(String(11), ForeignKey('cliente.cpf'),nullable = False)
+
+    cpf_cliente : Mapped[str] = MappedColumn(String(11), ForeignKey('cliente.cpf',ondelete='CASCADE'),nullable = False)
+    
     cod_produto : Mapped[str] = MappedColumn(String(13), ForeignKey('produto.cod_produto'), nullable = False)
 
     cliente : Mapped[List["Cliente"]] = Relationship(back_populates= 'compra')

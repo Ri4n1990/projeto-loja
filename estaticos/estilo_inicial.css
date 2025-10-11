@@ -2,7 +2,7 @@
 
 body{
     margin: 0;
-    padding: 0;
+    padding:  0 0 20px 0;
 }
 
 *{
@@ -51,29 +51,52 @@ body{
     transition: all .3s ease;
 }
 
-#acoes>div{
+#acoes>button{
+    border: none;
     border-radius: 5px;
+    width: 50px;
+    height: 50px;
     cursor: pointer;
 
 }
 
-#acoes>div>a{
-
+#acoes>button>a{
     display: block;
-    width: 200px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
     
+    
+}
+#editar>a{
+    background-image: url("../estaticos/icones/editar.png");
+}
+
+#criar>a{
+    background-image: url("../estaticos/icones/add_cliente.png");
 
 }
+
+#excluir>a{
+    background-image: url("../estaticos/icones/delete.png");
+
+}
+
+
+
+
 
 .acao_pos{
     background-color:  var(--cor01);
 }
 
-#acoes>div:not(.acao_pos){
+#acoes>button:not(.acao_pos){
     background-color: var(--cor03);
 }
 
-#acoes>div:hover{
+#acoes>button:hover{
     background-color: var(--cor02);
 }
 
@@ -94,6 +117,10 @@ body{
 
 #resp_tabela{
     overflow-x: auto;
+    overflow-y: auto; 
+    max-height: 600px;   
+       
+    
     
 }
 
@@ -110,9 +137,12 @@ td,th{
 }
 thead{
     position: sticky;
+    top: 0px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.228);
-    top: 0;
+    
 }
+
+
 th{
     font-size: 1.4em;
     background-color: var(--cor01);
@@ -137,7 +167,8 @@ tbody>tr:nth-of-type(even){
 
 
 
-#load{
+#load, #requisicao{
+    padding: 15px;
     width: 400px;
     height: 400px;
     margin: auto;
@@ -148,25 +179,52 @@ tbody>tr:nth-of-type(even){
 }
 
 
+
 dialog>figure{
     width: 100%;
     height: 100%;
-    
     display: flex;
+    flex-flow: column nowrap;
     align-items: center;
+    gap: 10px;
     justify-content: center;
     background-color: transparent;
 }
 
-
 dialog>figure>img{
-    width: 100%;
-    height: 100%;
+    width: 75%;
+    height: 75%;
+    
 }
 
 
 
 
+
+#aviso_requisicao{
+    
+    font-size: 2.5em;
+    font-family: "ABeeZee", sans-serif;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 5px;
+}
+
+
+#confirma{
+    background-color:  var(--cor01);
+    font-size: 2.5em;
+    font-family: "ABeeZee", sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    cursor: pointer;
+    
+
+}
 
 
 @media (max-width : 600px) {
@@ -174,10 +232,21 @@ dialog>figure>img{
         font-size: 1em;
     }
 
-    #load{
+    #load , #requisicao{
         width: 200px;
         height: 200px;
     }
+
+    #aviso_requisicao{
+        font-size: 1em;
+        
+    }
+
+    #confirma{
+        font-size: 1em;
+    }
+
+    
 
 
     

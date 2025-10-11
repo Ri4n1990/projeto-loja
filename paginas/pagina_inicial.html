@@ -22,11 +22,11 @@
 
     <section id="acoes">
 
-        <div id="editar" class="acao_pos"><img src="{{url_for('static' , filename = icones[0])}}" alt="editar" ></div>
+        <button id="editar" class="acao_pos"> <a href="#"></a></button>
 
-        <div id="criar" class="acao_pos"><img src="{{url_for('static' , filename = icones[1])}}" alt="criar" ></div>
+        <button id="criar" class="acao_pos"> <a href="{{url_for('criacao_cliente')}}"></a></button>
         
-        <div id="excluir"> <img src="{{url_for('static', filename = icones[2])}}" alt="#"></div>
+        <button id="excluir"> <a href="#"></a></button>
 
     </section>
 
@@ -63,13 +63,26 @@
 
     </dialog>
 
+            
 
 
-   <script>
+    <dialog id="requisicao">
+
+        <figure>
+
+            <img id="status"  src="{{url_for('static', filename = visuais[1])}}" alt="load">
+            <p id="aviso_requisicao">Registro deletado</p>
+            <button id="confirma">ok</button>
+
+        </figure>
 
 
-        
-   </script>
+
+    </dialog>
+
+
+   
+   
 
 
 </body>
