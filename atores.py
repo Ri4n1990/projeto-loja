@@ -68,9 +68,10 @@ class Adm:
             if(not cliente):
                 return 404
             
-            dados = {'cpf' : cliente.cpf, 'nome' : cliente.nome, 'email' : cliente.email, 'data_nascimento' : cliente.data_nascimento, 'genero' : cliente.genero, 'telefone' : cliente.telefone}
+            dados = {'cpf' : cliente.cpf, 'nome' : cliente.nome, 'email' : cliente.email, 'nascimento' : cliente.data_nascimento.strftime("%Y-%m-%d"), 'genero' : cliente.genero, 'telefone' : cliente.telefone}
 
             session.close()
+            
 
             return dados
 
@@ -79,6 +80,7 @@ class Adm:
         
         except Exception as erro:
             session.close()
+            print('algo saiu errado' , erro)
             return 500
 
     def criar(self,dados):
@@ -94,7 +96,7 @@ class Adm:
                 try:
                     session = Session(bd.engine)
 
-                    novo_cliente = md.Cliente( cpf = dados['cpf'], nome = dados['nome'], email = dados['email'] , data_nascimento = dados['data_nascimento'] , genero = dados['genero'] , telefone = dados['telefone'] )
+                    novo_cliente = md.Cliente( cpf = dados['cpf'], nome = dados['nome'], email = dados['email'] , data_nascimento = dados['nascimento'] , genero = dados['genero'] , telefone = dados['telefone'] )
 
                     session.add(novo_cliente)
 

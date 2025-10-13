@@ -46,7 +46,7 @@ def inicio():
 def obter_clientes():
 
     
-
+    
     try:
         admin = Adm()
         clientes = admin.obter_clientes()
@@ -65,6 +65,7 @@ def obter_clientes():
 @app.route('/cliente',methods = ['POST'])
 def novo_cliente():
 
+    
     try:
         dados = request.get_json()
         admin = Adm()
@@ -74,7 +75,7 @@ def novo_cliente():
         
     except Exception as erro:
         print('algo saiu errado!', erro)
-        return 500
+        return  "", 500
 
 
 
@@ -128,26 +129,70 @@ def excluir_cliente(cpf):
         return "", 500
 
 
+@app.route('/cliente/<cpf>', methods = ['GET'])
+def obter_cliente(cpf):
+    
+    try:
+        cpf = str(cpf)
+        str_regex = r"^\d{11}$"
+        teste = bool(re.search(str_regex , cpf))
+        
+        if not teste:
+            return "", 400
+        
+        admin = Adm()
+
+        resposta = admin.cliente(cpf)
+
+        if resposta == 404 or resposta == 500:
+            return "" , resposta
+        
+        print(resposta)
+        return resposta , 200
+
+
+    except Exception as erro:
+
+        return "" , 500
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @app.route('/pagina_add_cliente')
 def criacao_cliente():
     data = date.today().isoformat()
     estilo = 'estilo_criacao.css'
+    load = 'visuais/load.gif'
     verificacao = 'scripts/verificacao_add_cliente.js'
-    return render_template('pagina_criar_cliente.html', estilo = estilo, data = data, verificacao = verificacao)
+
+    return render_template('pagina_criar_cliente.html', estilo = estilo, data = data, verificacao = verificacao, load = load)
 
 
 
 @app.route('/pg_atualizar_cliente')
 def pg_atualizar():
     
-    cpf = request.args.get('cpf')
-    print(cpf)
+    
     estilo = 'estilo_atualizacao.css'
     verificacao = 'scripts/verificacao_add_cliente.js'
     interacao = 'scripts/interacao_atualizar.js'
-
-    return render_template('pagina_atualizar_cliente.html', estilo = estilo , verificacao = verificacao, interacao = interacao)
+    load = 'visuais/load.gif'
+    icone = 'visuais/sucess.gif'
+    return render_template('pagina_atualizar_cliente.html', estilo = estilo , verificacao = verificacao, interacao = interacao, load = load, icone = icone)
 
 
 @app.errorhandler(404)

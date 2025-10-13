@@ -97,12 +97,42 @@
         <section id="botoes">
                 
             <button id="cancela">Cancelar</button>
-            <button id="criar">Criar</button>
+            <button id="atualizar">Atualizar</button>
 
         </section>
 
 
     </main>
+
+
+
+    <dialog id="load">
+
+        
+        <figure>
+            <img   id="aviso"  src="{{url_for('static', filename = load)}}" alt="load">
+        </figure>
+    
+
+
+
+    </dialog>
+
+
+    <dialog id="requisicao">
+
+        <figure>
+
+            <img id="status"  src="{{url_for('static', filename = icone)}}" alt="modal_status">
+            <p id="aviso_requisicao">Cliente atualizado</p>
+            <button id="confirma">ok</button>
+
+        </figure>
+
+
+
+    </dialog>
+
 
     <script>
         

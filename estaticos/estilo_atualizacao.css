@@ -143,6 +143,73 @@ button:last-child{
 
 
 
+#load,#requisicao{
+    padding: 0px;
+    width: 450px;
+    height: 450px;
+    margin: auto;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    overflow: hidden;
+    
+}
+
+
+
+dialog>figure{
+    
+    width: 80%;
+    height: 90%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    
+    justify-content: center;
+    
+    
+}
+
+dialog>figure>img{
+    width: 75%;
+    height: 75%;
+    
+}
+
+
+
+
+
+#aviso_requisicao{
+    
+    font-size: 2em;
+    font-family: "ABeeZee", sans-serif;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 5px;
+    margin: 0 0 5px 0;
+    text-align: justify;
+    
+}
+
+
+#confirma{
+    background-color:  var(--cor01);
+    font-size: 2.5em;
+    font-family: "ABeeZee", sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 70px;
+    border-radius: 10px;
+    cursor: pointer;
+    
+
+}
+
+
+
 @media (max-width:740px) {
 
 
@@ -164,6 +231,20 @@ button:last-child{
 
     #botoes>button{
         width: 100%;
+    }
+
+    #requisicao,#load{
+        width: 200px;
+        height: 200px;
+    }
+
+    #aviso_requisicao{
+        font-size: 1em;
+        
+    }
+
+    #confirma{
+        font-size: 1em;
     }
 
 

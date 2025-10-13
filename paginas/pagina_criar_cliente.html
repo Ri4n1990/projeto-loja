@@ -104,35 +104,36 @@
     </main>
 
 
-
-    <script>
-        
+    <dialog id="load">
 
         
-
-    //     $.ajax({
-    //     url : '/cliente',
-    //     type : 'POST',
-    //     contentType : 'application/json',
-    //     data : JSON.stringify(dados),
-    //     statusCode : {
-    //         //aqui
-    //     }
-        
-    // })
+        <figure>
+            <img   id="aviso"  src="{{url_for('static', filename = load)}}" alt="load">
+        </figure>
+    
 
 
-        
+
+    </dialog>
 
 
-        
+    <dialog id="requisicao">
 
-       
+        <figure>
 
-        
+            <img id="status"  src="{{url_for('static', filename = icone)}}" alt="load">
+            <p id="aviso_requisicao">Cliente criado</p>
+            <button id="confirma">ok</button>
+
+        </figure>
 
 
-    </script>
+
+    </dialog>
+
+
+
+    
     
 </body>
 </html>

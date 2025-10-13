@@ -36,7 +36,7 @@ class Compra(Base):
     data_compra = MappedColumn(DATE, nullable = False)
     tipo_pagamento : Mapped[str] = MappedColumn(String(50), nullable = False)
 
-    cpf_cliente : Mapped[str] = MappedColumn(String(11), ForeignKey('cliente.cpf',ondelete='CASCADE'),nullable = False)
+    cpf_cliente : Mapped[str] = MappedColumn(String(11), ForeignKey('cliente.cpf',ondelete='CASCADE', onupdate= 'CASCADE'),nullable = False)
     
     cod_produto : Mapped[str] = MappedColumn(String(13), ForeignKey('produto.cod_produto'), nullable = False)
 
