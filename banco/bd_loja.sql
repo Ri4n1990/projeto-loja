@@ -59,6 +59,7 @@ CREATE TABLE IF NOT EXISTS compra(
 
 ) charset = utf8mb4;
 
+
 delete from cliente where cpf = '16161616161';
 
 INSERT INTO cliente (cpf, nome, email, data_nascimento, genero, telefone) VALUES
