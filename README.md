@@ -1,7 +1,8 @@
 <h1 align="center">Crud simples</h1>
 <p>O objetivo deste projeto é desenvolver um CRUD funcional, com o intuito de aplicar e consolidar os conhecimentos adquiridos em desenvolvimento de software. Além de exercitar boas práticas de programação, o projeto também tem como foco o aprimoramento de habilidades práticas no desenvolvimento de aplicações reais.</p>
-<h1align="center">Funcionalidades</h1>
-<h1style='font-size:30px'>Create</h1>
+<h1 align="center">Funcionalidades</h1>
+
+<h1>Create</h1>
 
 ![criacao](https://github.com/user-attachments/assets/66165550-a77f-45c7-b016-44e283b65cad)
 
